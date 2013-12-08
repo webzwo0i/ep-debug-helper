@@ -1,0 +1,12 @@
+generate the html files
+loop over them and submit them to ep
+  curl -D --data -F "file=@testchunk_nr*.html;type=multipart/form-data" http://127.0.0.1:9001/p/pad/import""
+get the export
+  wget http://127.0.0.1:9001/p/pad/export/html
+
+generate one file constisting of all styles and feed them to style-to-number.rb
+  cat testchunk*|sed -e 's/<br>/<br>\n/g'|grep "<br>"|sed -e 's/<br>\|<body>//g'|ruby style-to-number.rb > import.txt
+generate the same file for the export html
+  cat html*|sed -e 's/<br>/<br>\n/g'|grep "<br>"|sed -e 's/<br>\|<body>//g'|ruby style-to-number.rb >export.txt
+
+diff them
