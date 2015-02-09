@@ -1,3 +1,7 @@
+#when using mysql:
+#mysql -u username -p -e 'select * from `store` where `key` like "%pad%:revs:%";' etherpad-lite >allrevs
+#cat allrevs|ruby check-length.rb
+
 pads={}
 STDIN.readlines.each do |line|
   if m = line.match(/pad:(.[^:]*):revs:([0-9]+)[^{]*{"changeset":"Z:([a-z0-9]*)([<>])([0-9a-z]*)([^\$]*)/)
@@ -20,7 +24,7 @@ STDIN.readlines.each do |line|
     else
       if revbefore = pads[name][rev-1]
         if (l=revbefore.last) != before
-          puts "#{name}:#{rev} #{before} is not #{l} (revaops:#{revbefore[3]} revbops:#{csops})"
+          puts "#{name}:#{rev} #{before} is not #{l} (reva:#{revbefore[0..3].join('')} revb:#{[before,op,changed,csops].join('')})"
         end
         pads[name].delete(rev-1)
       end
