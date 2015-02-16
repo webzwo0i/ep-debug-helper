@@ -7,7 +7,7 @@ var end,start
 start=performance.now()
 for(i=0;i<50000;i++){
   if(long.length == 2000){
-    long +="a"
+    long +=String.fromCharCode(21+(i%105))
   }else{
     long = long.substring(0,2000)
   }
@@ -22,7 +22,7 @@ console.log("match with regex ", end-start)
 start=performance.now()
 for(i=0;i<50000;i++){
   if(long.length == 2000){
-    long +="a"
+    long +=String.fromCharCode(21+(i%105))
   }else{
     long = long.substring(0,2000)
   }
@@ -37,7 +37,7 @@ console.log("split with non-regex seperator",end-start )
 start=performance.now()
 for(i=0;i<50000;i++){
   if(long.length == 2000){
-    long +="a"
+    long +=String.fromCharCode(21+(i%105))
   }else{
     long = long.substring(0,2000)
   }
