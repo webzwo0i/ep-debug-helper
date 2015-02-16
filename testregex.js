@@ -46,6 +46,6 @@ for(i=0;i<50000;i++){
 //end = process.hrtime(start)
 end=performance.now()
 //console.log("split with regex seperator %ds %dms", end[0], end[1]/1000000)
-console.log("split with regex seperator %ds %dms", end-start)
+console.log("split with regex seperator", end-start)
 }
 foo()
